@@ -1,0 +1,635 @@
+openapi: 3.0.3
+info:
+  title: Title
+  description: Title
+  version: 1.0.0
+servers:
+  - url: 'https'
+paths:
+  /tags:
+    get:
+      summary: List all tags
+      operationId: listTags
+      tags:
+        - tags
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of tags
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Tags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a tag
+      operationId: createTags
+      tags:
+        - tags
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /tags/{tagId}:
+    get:
+      summary: Info for a specific tag
+      operationId: showTagById
+      tags:
+        - tags
+      parameters:
+        - name: tagId
+          in: path
+          required: true
+          description: The id of the tag to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Tags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseStates:
+    get:
+      summary: List all purchaseStates
+      operationId: listPurchaseStates
+      tags:
+        - purchaseStates
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of purchaseStates
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/PurchaseStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a purchaseState
+      operationId: createPurchaseStates
+      tags:
+        - purchaseStates
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseStates/{purchaseStateId}:
+    get:
+      summary: Info for a specific purchaseState
+      operationId: showPurchaseStateById
+      tags:
+        - purchaseStates
+      parameters:
+        - name: purchaseStateId
+          in: path
+          required: true
+          description: The id of the purchaseState to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/PurchaseStates'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseItems:
+    get:
+      summary: List all purchaseItems
+      operationId: listPurchaseItems
+      tags:
+        - purchaseItems
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of purchaseItems
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/PurchaseItems'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a purchaseItem
+      operationId: createPurchaseItems
+      tags:
+        - purchaseItems
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseItems/{purchaseItemId}:
+    get:
+      summary: Info for a specific purchaseItem
+      operationId: showPurchaseItemById
+      tags:
+        - purchaseItems
+      parameters:
+        - name: purchaseItemId
+          in: path
+          required: true
+          description: The id of the purchaseItem to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/PurchaseItems'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseTags:
+    get:
+      summary: List all purchaseTags
+      operationId: listPurchaseTags
+      tags:
+        - purchaseTags
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of purchaseTags
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/PurchaseTags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a purchaseTag
+      operationId: createPurchaseTags
+      tags:
+        - purchaseTags
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchaseTags/{purchaseTagId}:
+    get:
+      summary: Info for a specific purchaseTag
+      operationId: showPurchaseTagById
+      tags:
+        - purchaseTags
+      parameters:
+        - name: purchaseTagId
+          in: path
+          required: true
+          description: The id of the purchaseTag to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/PurchaseTags'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchases:
+    get:
+      summary: List all purchases
+      operationId: listPurchases
+      tags:
+        - purchases
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of purchases
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Purchases'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a purchase
+      operationId: createPurchases
+      tags:
+        - purchases
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /purchases/{purchaseId}:
+    get:
+      summary: Info for a specific purchase
+      operationId: showPurchaseById
+      tags:
+        - purchases
+      parameters:
+        - name: purchaseId
+          in: path
+          required: true
+          description: The id of the purchase to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Purchases'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /products:
+    get:
+      summary: List all products
+      operationId: listProducts
+      tags:
+        - products
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of products
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Products'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a product
+      operationId: createProducts
+      tags:
+        - products
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /products/{productId}:
+    get:
+      summary: Info for a specific product
+      operationId: showProductById
+      tags:
+        - products
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: The id of the product to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Products'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /clients:
+    get:
+      summary: List all clients
+      operationId: listClients
+      tags:
+        - clients
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of clients
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/Clients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a client
+      operationId: createClients
+      tags:
+        - clients
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /clients/{clientId}:
+    get:
+      summary: Info for a specific client
+      operationId: showClientById
+      tags:
+        - clients
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          description: The id of the client to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/Clients'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /clientCategorys:
+    get:
+      summary: List all clientCategorys
+      operationId: listClientCategorys
+      tags:
+        - clientCategorys
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: A paged array of clientCategorys
+          headers:
+            x-next:
+              type: string
+              description: A link to the next page of responses
+          schema:
+            $ref: '#/definitions/ClientCategorys'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a clientCategory
+      operationId: createClientCategorys
+      tags:
+        - clientCategorys
+      responses:
+        "201":
+          description: Null response
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /clientCategorys/{clientCategoryId}:
+    get:
+      summary: Info for a specific clientCategory
+      operationId: showClientCategoryById
+      tags:
+        - clientCategorys
+      parameters:
+        - name: clientCategoryId
+          in: path
+          required: true
+          description: The id of the clientCategory to retrieve
+          type: string
+      responses:
+        "200":
+          description: Expected response to a valid request
+          schema:
+            $ref: '#/definitions/ClientCategorys'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+
+
+definitions:
+  Tag:
+    type: "object"
+    required:
+      - id
+      - code
+      - reference
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      reference:
+        type: string
+  Tags:
+    type: array
+    items:
+      $ref: '#/definitions/Tag'
+  PurchaseState:
+    type: "object"
+    required:
+      - id
+      - reference
+      - code
+    properties:
+      id:
+        type: int
+      reference:
+        type: string
+      code:
+        type: string
+  PurchaseStates:
+    type: array
+    items:
+      $ref: '#/definitions/PurchaseState'
+  PurchaseItem:
+    type: "object"
+    required:
+      - id
+      - price
+      - quantity
+    properties:
+      id:
+        type: int
+      price:
+        type: number
+      quantity:
+        type: number
+  PurchaseItems:
+    type: array
+    items:
+      $ref: '#/definitions/PurchaseItem'
+  PurchaseTag:
+    type: "object"
+    required:
+      - id
+    properties:
+      id:
+        type: int
+  PurchaseTags:
+    type: array
+    items:
+      $ref: '#/definitions/PurchaseTag'
+  Purchase:
+    type: "object"
+    required:
+      - id
+      - reference
+      - purchaseDate
+      - image
+      - total
+      - description
+    properties:
+      id:
+        type: int
+      reference:
+        type: string
+      purchaseDate:
+        type: date
+      image:
+        type: string
+      total:
+        type: number
+      description:
+        type: string
+  Purchases:
+    type: array
+    items:
+      $ref: '#/definitions/Purchase'
+  Product:
+    type: "object"
+    required:
+      - id
+      - code
+      - reference
+    properties:
+      id:
+        type: int
+      code:
+        type: string
+      reference:
+        type: string
+  Products:
+    type: array
+    items:
+      $ref: '#/definitions/Product'
+  Client:
+    type: "object"
+    required:
+      - id
+      - fullName
+      - email
+    properties:
+      id:
+        type: int
+      fullName:
+        type: string
+      email:
+        type: string
+  Clients:
+    type: array
+    items:
+      $ref: '#/definitions/Client'
+  ClientCategory:
+    type: "object"
+    required:
+      - id
+      - reference
+      - code
+    properties:
+      id:
+        type: int
+      reference:
+        type: string
+      code:
+        type: string
+  ClientCategorys:
+    type: array
+    items:
+      $ref: '#/definitions/ClientCategory'
+
+  Error:
+    type: "object"
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
